@@ -1,7 +1,102 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
+h1 {
+  text-align: center;
+  font-family: Gill Sans, sans-serif;
+  font-weight: lighter;
+  font-size:90px;
+}
+h3{
+  text-align: center;
+  font-family: Gill Sans, sans-serif;
+  font-weight: lighter;
+  font-size:20px;
+}
+.text_body {
+  font-family: Gill Sans, sans-serif;
+  text-align: left;
+  font-size: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+label {
+  font-size: 18px;
+  font-family: Gill Sans, sans-serif;
+}
+.highlight {
+  font-family: Gill Sans, sans-serif;
+  font-size: 15px;
+}
+.description {
+  font-family: Gill Sans, sans-serif;
+  font-size: 18px;
+  text-align: left;
+}
+
 canvas {
   display: block;
+  width: 100px;
+  height: 300px;
+}
+.parent {
+  border: 3px;
+  border-style: none;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: center;
+}
+.child {
+  display: inline-block;
+  border: 3px;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 1rem 1rem;
+  margin: 3px;
+  vertical-align: middle;
+}
+.slidecontainer {
+  border: 3px;
+  border-style: solid;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 3px;
+}
+.slidecontainer:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: #ffffff; /* Green */
+  color: green;
+}
+.checkbox {
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;
+  color: black;
+}
+.startBT {
+  border: 5px;
+  border-style: solid;
+  border-radius: 10px;
+  margin: 10px 3px 7px 9px;
+  padding: 15px;
+  text-align: center;
+  display: inline-block;
+
+  font-family: Gill Sans, sans-serif;
+  font-size: 16px;
+}
+.startBT:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: #ffffff; /* Green */
+  color: green;
 }

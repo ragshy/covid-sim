@@ -1,17 +1,92 @@
 <!DOCTYPE html><html lang="en"><head>
-    <script src="p5.js"></script>
-    <script src="p5.sound.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+  <script defer src="https://unpkg.com/p5.collide2d"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.4.0/math.js"></script>
+  
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
     <title>COVID-19 Simulation</title>
   </head>
   <body>
-    <h1>COVID-19 Simulation</h1>
+    <h1>COVID-19 Simulation Tool</h1>
+    <h3> by Ragshanan Ragunathan</h3><br>
+    <p class="text_body"> This is a tool to simulate COVID-19 and its likelihood of spreading through a population. An individual can be Susceptible, Infectious, Recovered or Deceased. This simulation is closely modelled after the <a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIRD_model" target="_blank">SIRD compartmental system in epidemiology</a>. You can set all parameters manually using the sliders and then press the <b>"Start"</b> button or you can select the <b>"Use current RKI data"</b> checkbox to automatically set Transmission Rate, Recovery Rate, Mortality Rate and number of initial infectious individuals. You can change the Vaccination Rate, Immunity-Breakthrough Rate and Mobility Rate while the simulation is running. </p>
+    <div class="parent">
+      <div class="child">
+        <div class="slidecontainer">
+          <label for="population">Population</label><br>
+          <input type="range" min="10" max="400" value="200" step="10" class="slider" id="population"><br>
+          <span class="highlight" id="population_span"> </span>
+        </div>
 
-    <script src="sketch.js"></script>
-    <script src="person.js"></script>
-    <script src="building.js"></script>
-    
+        <div class="slidecontainer">
+          <label for="transmissionRate">Transmission Rate (R-Value)</label><br>
+          <input type="range" min="0" max="2" value="1" step="0.01" class="slider" id="transmissionRate"><br>
+          <span class="highlight" id="transmissionrate_span"> </span>
+        </div>
+        <div class="slidecontainer">
+          <label for="recoveryRate">Recovery Rate</label><br>
+          <input type="range" min="0" max="1" value="0.6" step="0.01" class="slider" id="recoveryRate"><br>
+          <span class="highlight" id="recoveryrate_span"> </span>
+        </div>
+        <div class="slidecontainer">
+          <label for="mortalityRate">Mortality Rate</label><br>
+          <input type="range" min="0" max="0.1" value="0.01" step="0.001" class="slider" id="mortalityRate"><br>
+          <span class="highlight" id="mortalityrate_span"> </span>
+        </div>
+        <div class="slidecontainer" title="You can change this value while the simulation is running!">
+          <label for="vaccinationRate">Vaccination Rate</label><br>
+          <input type="range" min="0" max="0.95" value="0" step="0.05" class="slider" id="vaccinationRate"><br>
+          <span class="highlight" id="vaccinationRate_span"> </span>
+        </div>
+        <div class="slidecontainer" title="You can change this value while the simulation is running!">
+          <label for="immuneBreakthroughRate">Immunity-Breakthrough Rate</label><br>
+          <input type="range" min="0" max="1" value="0.1" step="0.05" class="slider" id="immuneBreakthroughRate"><br>
+          <span class="highlight" id="immuneBreakthroughRate_span"> </span>
+        </div>
+        <div class="slidecontainer" title="You can change this value while the simulation is running!">
+          <label for="mobility">Mobility Rate</label><br>
+          <input type="range" min="0.001" max="0.05" value="0.015" step="0.001" class="slider" id="mobility"><br>
+          <span class="highlight" id="mobility_span"> </span>
+        </div>
+        <div>
+          <input class="checkbox" type="checkbox" id="use_rki" value="1">
+          <label for="use_rki">Use current RKI data</label>
+          <br>
+        </div>
+        <div>
+          <button class="startBT" onclick="startSketch()" type="button" id="start_button">
+            Start!
+          </button>
+        </div>
+      </div>
+
+      <script src="person.js"></script>
+      <script src="sird_model.js"></script>
+      <script src="sketch.js"></script>
+
+      <div class="child">
+        <div id="sketch-container"></div>
+        <div>
+          <p>
+            <img src="assets/lockdown.png" alt="Lockdown Button" width="16" height="16"><span class="description">
+              Lockdown: Press and hold to invoke a total lockdown. </span><br>
+            <img src="assets/bed.png" alt="Isolation Button" width="16" height="16"><span class="description">
+              Isolation: Hover to invoke social distancing of infectious
+              individuals. </span><br>
+            <img src="assets/event.png" alt="Event Button" width="16" height="16"><span class="description"> Event: Hover to throw an event. </span><br>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <script src="plot.js"></script>
+      <canvas id="plot"></canvas>
+    </div>
+    <br>
+    <br>
   
 
 </body></html>
